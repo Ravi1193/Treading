@@ -184,9 +184,13 @@
     <Content Include="Content\css\aos\aos.css" />
     <Content Include="Content\css\aos\aos.js" />
     <Content Include="Content\css\icofont\icofont.min.css" />
+    <Content Include="Content\Images\signin-image.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\material-design-iconic-font.css" />
+    <Content Include="fonts\material-design-iconic-font.min.css" />
+    <Content Include="fonts\Material-Design-Iconic-Font.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -223,6 +227,10 @@
     <Content Include="assets\vendor\owl.carousel\README.md" />
     <Content Include="Content\css\icofont\fonts\icofont.woff" />
     <Content Include="Content\css\icofont\fonts\icofont.woff2" />
+    <Content Include="fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="fonts\Material-Design-Iconic-Font.woff2" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -258,8 +266,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Authenticate\Login.cshtml" />
     <Content Include="Views\Authenticate\Signup.cshtml" />
+    <Content Include="Views\Authenticate\Login.cshtml" />
+    <Content Include="Views\Authenticate\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

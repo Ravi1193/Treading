@@ -13,6 +13,11 @@ namespace Treading.ViewModel
 
         [Required]
         public string  Password { get; set; }
-        
+
+        [Required]
+        public string Name { get; set; }
+
+
+
     }
 }

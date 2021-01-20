@@ -19,12 +19,13 @@ namespace Treading.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            return PartialView();
+            return View();
         }
 
         [HttpPost]
         public ActionResult Login(AuthenticationViewModel model)
         {
+            ModelState.Remove("Name");
             if (ModelState.IsValid)
             {
                 bool AuthUsers = AuthenticateRepository.Authenticate(model);
@@ -36,14 +37,29 @@ namespace Treading.Controllers
                 }
                 else
                 {
-                    return PartialView(model);
+                    return View(model);
 
                 }
             }
             {
                 
-                return PartialView(model);
+                return View();
             }
+        }
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        public ActionResult Register(AuthenticationViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                return RedirectToAction("Login");
+            }
+            TempData["Error"] = "All are required fields";
+            return PartialView(model);
         }
         public ActionResult Signup()
         {

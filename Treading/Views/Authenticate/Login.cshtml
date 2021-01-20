@@ -1,112 +1,108 @@
 ﻿@model Treading.ViewModel.AuthenticationViewModel
 
-@using (Html.BeginForm("Login", "Authenticate", FormMethod.Post, new { @onsubmit = "return OnFormSubmit(this);" }))
-{
-    <div class="modal" id="myModal" tabindex="-1">
-        <div class="modal-dialog" style="width:309px;">
-            <!-- Modal content-->
-            <div class="modal-content">
-                @*<div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
 
-                    </div>*@
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="d-flex justify-content-center h-100">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Login</h4>
-                                </div>
-                                <div class="card-body">
-                                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-                                    <form>
-                                        <div class="input-group form-group">
-                                            @Html.TextBoxFor(x => x.Username, new { @class = "form-control", placeholder = "Enter Username" })
-                                        </div>
-                                        <br />
-                                        <div class="input-group form-group">
-                                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", placeholder = "Enter Password" })
-                                        </div>
-                                        <br />
-                                        <div class="form-group">
-                                            <a href="javascript:void(0);" onclick="getProperties()" data-toggle="modal" data-target="#Add_" title="Show Data">
-                                                <div class="panel-body">
-                                                    <input type="button" value="Login">
-                                                </div>
+    <!-- Font Icon -->
 
-                                            </a>
+    <link href="~/fonts/material-design-iconic-font.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Main css -->
+    <style>
+        section {
+            padding: 20px 0;
+        }
+    </style>
 
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-flex justify-content-center links" style="font-size:15px;">
-                                        Don't have an account?
-                                        @*<a href="#" data-dismiss="modal">Sign Up</a>*@
-                                        <a href="javascript:void(0);" onclick="get()" data-toggle="modal" data-target="#Add_" title="Show Data">
-                                            <div class="panel-body">
-                                                <div id="demo-morris-bar">Sign Up</div>
-                                            </div>
+</head>
+<body>
+    @using (Html.BeginForm("Login", "Authenticate", FormMethod.Post))
+    {
 
-                                        </a>
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <a href="#">Forgot your password?</a>
-                                    </div>
-                                </div>
+        <main id="main">
+            <section class="sign-in">
+                <div class="container" id="text">
+                    <div class="signin-content">
+
+                        <div class="signin-image">
+                            <p>Don't know about Treading ? <br />Don't Worry I am here teach you.</p>
+                            <figure>
+                                <img src="~/Content/Images/signin-image.jpg" alt="Images" />
+                            </figure>
+
+                        </div>
+
+                        <div class="signin-form">
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                            <h2 class="form-title">Login</h2>
+
+                            <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                @Html.TextBoxFor(x => x.Username, new { @placeholder = "Username" })
                             </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                @Html.PasswordFor(x => x.Password, new { @placeholder = "Password" })
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
+                            </div>
+                            <div class="form-group form-button">
+                                <span style="font-size:18px;">
+                                    <a href="javascript:void(0);" onclick="registerGet()" data-toggle="modal" data-target="#Add_" title="Show Data">
+                                        <div class="panel-body">
+                                            <div id="demo-morris-bar">
+                                                Don't have an account? Sign up
+                                            </div>
+                                        </div>
+                                    </a>
+                                </span>
+                            </div>
+
+
+
                         </div>
                     </div>
+                </div>
+            </section>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" onclick="javascript: location.reload();">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-}
+        </main>
+        <!-- JS -->
+    }
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
+<div class="modal fade in" id="Add_">
+    <div id="AddModel_" style="width:700px;margin-top:80PX;"></div>
+</div>
 
 <script>
-         function get() {
-          AddModel = $("#AddModel_");
+ 
+
+         function registerGet() {
+     
+         AddModel = $("#AddModel_");
           $.ajax({
-              url: '@Url.Action("Signup", "Authenticate")',
+              url: '@Url.Action("Register", "Authenticate")',
               type: 'GET',
               success: function (result) {
                   $("#AddModel_").html(result);
                   $(".modal").css("display", "block");
-                  $(".fade:not(.show)").css("opacity","100%");
+
+                  $(".fade:not(.show)").css("opacity", "100%");
                   $("div.modal-backdrop").css("opacity", "");
 
               }
           });
     }
-
-</script>
-<script>
-    function getProperties() {
-
-             var user = $("#Username").val();
-             var pass = $("#Password").val();
-
-        $.ajax({
-            url: '@Url.Action("Login", "Authenticate")',
-            type: 'POST',
-            data: { Username: user, Password: pass},
-            success: function (result) {
-                if (user == "" || pass == "") {
-                    console.log("Hello");
-                    $("#AddModel_").html(result);
-                    $(".modal").css("display", "block");
-
-                }
-                else {
-                    $("#myModal").hide();
-                    location.reload();
-                }
-              }
-        });
-         }
 
 </script>
