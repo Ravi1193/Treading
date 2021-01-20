@@ -10,17 +10,26 @@ namespace Treading.Models
     public class CommanRepository
     {
         private static string GetConnection = @"Data Source=DESKTOP-MQ1T80C;Initial Catalog=Treading;Persist Security Info=True;User ID=ravi;Password=12345";
-        public static void WithoutReturn(string StoreProcureName, object Param)
+        public static int WithoutReturn(string StoreProcureName, object Param)
         {
-            using (SqlConnection con = new SqlConnection(GetConnection))
+            try
             {
-                con.Open();
-                con.Execute(StoreProcureName, Param, commandType: CommandType.StoredProcedure);
+                using (SqlConnection con = new SqlConnection(GetConnection))
+                {
+                    con.Open();
+                    con.Execute(StoreProcureName, Param, commandType: CommandType.StoredProcedure);
+                    return 1;
+                }
+            }catch(Exception ex)
+            {
+                return 0;
             }
+            
         }
 
         public static T singleReturn<T>(string StoreProcureName, object Param)
         {
+
             using (SqlConnection con = new SqlConnection(GetConnection))
             {
                 con.Open();

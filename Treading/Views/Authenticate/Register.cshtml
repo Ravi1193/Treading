@@ -2,8 +2,7 @@
 
 <link href="~/fonts/material-design-iconic-font.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <!-- Main css -->
 <style>
     section {
@@ -19,35 +18,39 @@
         <div class="modal-content" style="margin-left: 0px; margin-top: 10px">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <div class="modal-body">
-                <section class="sign-in">
+                <section class="sign-in" >
                     <div class="container" id="text" style="width:100%;">
-                        <div class="signin-content">
+                        <div class="signin-content" style="padding-top:11px;">
                             <div class="signin-form">
                                 @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-                                <h2 class="form-title">Login</h2>
-                                <form method="POST" class="register-form" id="login-form">
-                                    <div class="form-group">
-                                        <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                        @Html.TextBoxFor(x => x.Name, new { @placeholder = "Name" })
+                                <h2 class="form-title">Sign up</h2>
 
+                                <div class="form-group">
+                                    <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                    @Html.TextBoxFor(x => x.Name, new { @placeholder = "Name" })
 
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                        @Html.PasswordFor(x => x.Password, new { @placeholder = "Password" })
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                        <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                                    </div>
-                                    <div class="form-group form-button">
-                                        <button type="button" class="btn btn-default" onclick="Register()">Sign up</button>
-                                    </div>
-                                    <div class="form-group form-button">
-                                        <span style="font-size:18px;">Don't have an account?<a href="#" data-toggle="modal" data-target="#myModal">Signup Here</a></span>
-                                    </div>
-
-                                </form>
+                                </div>
+                                <div class="form-group">
+                                    <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                    @Html.TextBoxFor(x => x.Email, new { @placeholder = "Email" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                    @Html.TextBoxFor(x => x.Mobile, new { @placeholder = "Phone No" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                    @Html.TextBoxFor(x => x.Username, new { @placeholder = "Username",@Id ="users" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                    @Html.PasswordFor(x => x.Password, new { @placeholder = "Password" ,@Id ="passw"})
+                                </div>
+                                <br />
+                                <div class="form-group form-button">
+                                    <button type="button" class="btn btn-default" onclick="Register()">Sign up</button>
+                                    <button type="button" class="btn btn-default" value="clear" >Clear</button>
+                                </div>
 
                             </div>
                         </div>
@@ -63,16 +66,19 @@
 <script>
  function Register() {
         debugger
-        var user = $("#Name").val();
-        var pass = $("#Password").val();
+        var name = $("#Name").val();
+        var email = $("#Email").val();
+        var mobile = $("#Mobile").val();
+         var users = $("#users").val();
+     var pass = $("#passw").val();
 
         $.ajax({
             url: '@Url.Action("Register", "Authenticate")',
             type: 'POST',
-            data: { Username: user, Password: pass },
+            data: { Name: name, Email: email, Mobile: mobile, Username: users, Password: pass },
             success: function (result) {
             console.log("hello");
-            if (user == "" || pass == "") {
+                if (users == "" || pass == "" || name == "" || email == "" || mobile == "" ) {
             console.log("Hello");
             $("#AddModel_").html(result);
             $(".modal").css("display", "block");

@@ -26,6 +26,8 @@ namespace Treading.Controllers
         public ActionResult Login(AuthenticationViewModel model)
         {
             ModelState.Remove("Name");
+            ModelState.Remove("Email");
+            ModelState.Remove("Mobile");
             if (ModelState.IsValid)
             {
                 bool AuthUsers = AuthenticateRepository.Authenticate(model);
@@ -54,11 +56,15 @@ namespace Treading.Controllers
         [HttpPost]
         public ActionResult Register(AuthenticationViewModel model)
         {
+            model.Status = true;
             if(ModelState.IsValid)
             {
-                return RedirectToAction("Login");
+                AuthenticateRepository repository = new AuthenticateRepository();
+                var saveUsers =repository.SaveUser(model);
+                  
+                return View(model);
             }
-            TempData["Error"] = "All are required fields";
+            
             return PartialView(model);
         }
         public ActionResult Signup()

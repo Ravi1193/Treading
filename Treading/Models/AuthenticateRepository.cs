@@ -18,5 +18,20 @@ namespace Treading.Models
 
             return true;
         }
+
+        public int SaveUser(AuthenticationViewModel model)
+        {
+           var save =CommanRepository.WithoutReturn("sp_SaveUsers", new
+            {
+                model.Id,
+                model.Name,
+                model.Email,
+                model.Mobile,
+                model.Username,
+                model.Password,
+                model.Status
+            });
+            return save;
+        }
     }
 }
