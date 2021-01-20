@@ -62,6 +62,10 @@ namespace Treading.Controllers
                 AuthenticateRepository repository = new AuthenticateRepository();
                 var saveUsers =repository.SaveUser(model);
                   
+                if(saveUsers ==1)
+                {
+                    bool sendMail = CommanRepository.SendMail(model);
+                }
                 return View(model);
             }
             
