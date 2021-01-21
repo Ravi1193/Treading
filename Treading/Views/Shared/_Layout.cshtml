@@ -30,9 +30,10 @@
         <nav>
             <ul>
                 <li><a href="@Url.Action("Index","Home")">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="@Url.Action("Index","About")">About</a></li>
+                <li><a href="@Url.Action("Index","Contact")">Contact</a></li>
                 <li><a href="#">Blogs</a></li>
+
                 <li><a href="@Url.Action("Index", "Team")">Team</a></li>
                 @if (Session["session"] == "test")
                 {
@@ -71,6 +72,7 @@
                 <a href="#" class="instagram"><i class="icofont-instagram"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="#" class="skype"><i class="icofont-skype"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+                <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
             </div>
 
         </div>
