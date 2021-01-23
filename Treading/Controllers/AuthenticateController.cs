@@ -60,13 +60,24 @@ namespace Treading.Controllers
             if(ModelState.IsValid)
             {
                 AuthenticateRepository repository = new AuthenticateRepository();
-                var saveUsers =repository.SaveUser(model);
-                  
-                if(saveUsers ==1)
+                var ExitEmail = repository.EmailExit(model.Email);
+                if (ExitEmail)
                 {
-                    bool sendMail = CommanRepository.SendMail(model);
+                    var saveUsers = repository.SaveUser(model);
+
+                    if (saveUsers == 1)
+                    {
+                        bool sendMail = CommanRepository.SendMail(model);
+                    }
+                    TempData["Error"] = "Registration Successfull";
+                    return PartialView(model);
                 }
-                return View(model);
+                else
+                {
+                    TempData["Error"] = "Email already registered";
+                    return PartialView(model);
+                }
+                
             }
             
             return PartialView(model);

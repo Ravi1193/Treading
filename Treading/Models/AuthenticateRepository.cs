@@ -33,5 +33,18 @@ namespace Treading.Models
             });
             return save;
         }
+
+        public bool EmailExit(string Email)
+        {
+            var CheckEMailExit = CommanRepository.singleReturn<bool>("sp_CheckExitEmail", new
+            {
+                Email
+            });
+            if(CheckEMailExit)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

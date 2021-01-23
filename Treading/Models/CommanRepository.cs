@@ -13,7 +13,7 @@ namespace Treading.Models
 {
     public class CommanRepository
     {
-        private static string GetConnection = @"Data Source=DESKTOP-MQ1T80C;Initial Catalog=Treading;Persist Security Info=True;User ID=ravi;Password=12345";
+        private static string GetConnection = @"Data Source=DESKTOP-1I002HL\RAVI;Initial Catalog=Treading;Persist Security Info=True;User ID=sa;Password=123";
         public static int WithoutReturn(string StoreProcureName, object Param)
         {
             try
