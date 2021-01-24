@@ -25,6 +25,6 @@ namespace Treading.ViewModel
 
         public bool Status { get; set; }
 
-
+        public string Error { get; set; }
     }
 }

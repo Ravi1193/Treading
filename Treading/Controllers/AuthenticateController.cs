@@ -75,6 +75,7 @@ namespace Treading.Controllers
                 else
                 {
                     TempData["Error"] = "Email already registered";
+                    model.Error = TempData["Error"].ToString();
                     return PartialView(model);
                 }
                 
