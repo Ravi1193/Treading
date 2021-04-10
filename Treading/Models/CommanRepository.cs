@@ -14,6 +14,7 @@ namespace Treading.Models
     public class CommanRepository
     {
         private static string GetConnection = @"Data Source=DESKTOP-1I002HL\RAVI;Initial Catalog=Treading;Persist Security Info=True;User ID=sa;Password=123";
+     //   private static string GetConnection = @"workstation id=Treading.mssql.somee.com;packet size=4096;user id=ravi_SQLLogin_1;pwd=lzxw48uj5z;data source=Treading.mssql.somee.com;persist security info=False;initial catalog=Treading"";
         public static int WithoutReturn(string StoreProcureName, object Param)
         {
             try

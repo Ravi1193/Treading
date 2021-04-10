@@ -15,8 +15,14 @@ namespace Treading.Models
                 model.Username,
                 model.Password
             });
-
-            return true;
+            if (validate != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public int SaveUser(AuthenticationViewModel model)
