@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/assets/vendor/icofont/icofont.min.css" rel="stylesheet" />
+<link href="~/assets/css/style.css" rel="stylesheet" />
+<link href="~/Content/style.css" rel="stylesheet" />
+<br />
+<br />
+<div class="container">
+    <h4>Patient Details</h4>
+    <br />
+    <table class="table">
+        <tr>
+            <th>Registration On</th>
+            <th>Patient Name</th>
+            <th>Gender</th>
+        </tr>
+
+        @foreach (var patient in ViewBag.Patiant)
+        {
+            <tr>
+                <td>@patient.regOn </td>
+                <td>@patient.pName </td>
+                <td>@patient.gender </td>
+            </tr>
+        }
+    </table>
+</div>
